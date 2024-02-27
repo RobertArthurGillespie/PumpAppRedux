@@ -163,25 +163,30 @@ public class PumpAssemblyManager : MonoBehaviour
             yield return null;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public void HideObjectsOnStart()
     {
         MeshRenderer[] renderers = pump.GetComponentsInChildren<MeshRenderer>();
         Collider[] colliders = pump.GetComponentsInChildren<Collider>();
-        foreach(MeshRenderer r in renderers)
+        foreach (MeshRenderer r in renderers)
         {
-            if(r.gameObject.name!= "FloorMount.001")
+            if (r.gameObject.name != "FloorMount.001")
             {
                 r.enabled = false;
             }
-            
+
         }
-        foreach(Collider c in colliders)
+        foreach (Collider c in colliders)
         {
             c.enabled = false;
         }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        //HideObjectsOnStart();
         //PlayEpisode();
-        StartCoroutine(PlayIntro());
+        //StartCoroutine(PlayIntro());
     }
 
     // Update is called once per frame

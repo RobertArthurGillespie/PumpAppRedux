@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 28d298e16c810bf43b658464c1283ffd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 215454
+  packageName: os. Outline Objects | Quick Outlines in 2D and 3D for Unity URP
+  packageVersion: 2.1.1
+  assetPath: Assets/OccaSoftware/OutlineObjects/AssetResources/Editor/OutlineObjectsShaderGUI.cs
+  uploadId: 570601

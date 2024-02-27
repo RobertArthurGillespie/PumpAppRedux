@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 183e719b3ae1a2d4d82f5a5b42fee25c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 215454
+  packageName: os. Outline Objects | Quick Outlines in 2D and 3D for Unity URP
+  packageVersion: 2.1.1
+  assetPath: Assets/OccaSoftware/OutlineObjects/DemoResources/Levels/OutlineObjectsDemo_P/PP_HullShaderDemo.asset
+  uploadId: 570601

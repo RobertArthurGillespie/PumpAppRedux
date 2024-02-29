@@ -86,6 +86,16 @@ public class AssemblyReduxManager : MonoBehaviour
         Material[] MatArray = ReEpisodeObject.GetComponent<MeshRenderer>().materials;
         MatArray[1] = HighlightMaterial;
         ReEpisodeObject.GetComponent<MeshRenderer>().materials= MatArray;
+        if (currentReEpisode.AdditionalObjectNames.Count > 0)
+        {
+            foreach (string name in currentReEpisode.AdditionalObjectNames)
+            {
+                GameObject obj = GameObject.Find(name);
+                Material[] GlowMatArray = obj.GetComponent<MeshRenderer>().materials;
+                GlowMatArray[1] = HighlightMaterial;
+                obj.GetComponent<MeshRenderer>().materials = GlowMatArray;
+            }
+        }
         Debug.Log("outline added");
         while (true)
         {
@@ -112,6 +122,16 @@ public class AssemblyReduxManager : MonoBehaviour
                     {
                         MatArray[1] = RegularMaterial;
                         ReEpisodeObject.GetComponent<MeshRenderer>().materials = MatArray;
+                        if (currentReEpisode.AdditionalObjectNames.Count > 0)
+                        {
+                            foreach (string name in currentReEpisode.AdditionalObjectNames)
+                            {
+                                GameObject obj = GameObject.Find(name);
+                                Material[] RegMatArray = obj.GetComponent<MeshRenderer>().materials;
+                                RegMatArray[1] = RegularMaterial;
+                                obj.GetComponent<MeshRenderer>().materials = RegMatArray;
+                            }
+                        }
                         //ReEpisodeObject.GetComponent<Outline>().enabled = false;
 
 

@@ -147,7 +147,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Motor
+      name: Seal
       takeName: Scene
       internalID: 6763395943919261652
       firstFrame: 517
@@ -266,8 +266,8 @@ ModelImporter:
       name: Impeller_Placed
       takeName: Scene
       internalID: -6545883061796769282
-      firstFrame: 270
-      lastFrame: 271
+      firstFrame: 269
+      lastFrame: 269
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -295,8 +295,8 @@ ModelImporter:
       name: Housing_Placed
       takeName: Scene
       internalID: 4419572467542519676
-      firstFrame: 509
-      lastFrame: 510
+      firstFrame: 508
+      lastFrame: 508
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -321,7 +321,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Motor_Placed
+      name: Seal_Placed
       takeName: Scene
       internalID: 6718882168854523491
       firstFrame: 776
@@ -353,8 +353,8 @@ ModelImporter:
       name: Shaft_Placed
       takeName: Scene
       internalID: 7547488062441917722
-      firstFrame: 1044
-      lastFrame: 1045
+      firstFrame: 1043
+      lastFrame: 1043
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -382,8 +382,8 @@ ModelImporter:
       name: Bearings_Placed
       takeName: Scene
       internalID: -1988452942410485794
-      firstFrame: 1035
-      lastFrame: 1036
+      firstFrame: 1220
+      lastFrame: 1220
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

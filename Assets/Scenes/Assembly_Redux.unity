@@ -1495,10 +1495,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ff612085219df948bf658622acf4111, type: 2}
   audioSource: {fileID: 1507958342}
   ReEpisodeIndex: 0
-  introClip: {fileID: 0}
+  introClip: {fileID: 8300000, guid: 8fe143129741bb643ba444e768b4b0a6, type: 3}
   RegularMaterial: {fileID: 2100000, guid: 1a9029372d3e4a248aeebb5e35d03104, type: 2}
   TransMaterial: {fileID: 2100000, guid: 0c70f1fe57326f0439e789e146638f53, type: 2}
   HighlightMaterial: {fileID: 2100000, guid: 5b0ce73f61a5c7b47a425f04b400fdfc, type: 2}
+  introAudioFinished: 0
 --- !u!1 &1555456411 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78c6942d1f2a8154db8cfdb2f38c3ec8,

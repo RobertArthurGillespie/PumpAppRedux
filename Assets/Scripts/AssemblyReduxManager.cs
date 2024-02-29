@@ -15,11 +15,13 @@ public class AssemblyReduxManager : MonoBehaviour
     public Material RegularMaterial;
     public Material TransMaterial;
     public Material HighlightMaterial;
+    public bool introAudioFinished = false;
     GameObject ReEpisodeObject;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(PlayReEpisodeCoroutine());
+        
     }
 
     // Update is called once per frame
@@ -52,9 +54,23 @@ public class AssemblyReduxManager : MonoBehaviour
             }
             yield return null;
         }*/
+
+        if (!introAudioFinished)
+        {
+            audioSource.clip = introClip;
+            audioSource.Play();
+            while (true)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    introAudioFinished = true;
+                    break;
+                }
+                yield return null;
+            }
+        }
         ReEpisode currentReEpisode = PumpReEpisodes[ReEpisodeIndex];
-        audioSource.clip = currentReEpisode.EpisodeAudio;
-        audioSource.Play();
+        
         ReEpisodeObject = GameObject.Find(currentReEpisode.EpisodeObjectName);
         ReEpisodeObject.GetComponent<Collider>().enabled = true;
         Debug.Log("ReEpisode object is: " + ReEpisodeObject.name);
@@ -157,8 +173,10 @@ public class AssemblyReduxManager : MonoBehaviour
                             }
                         }*/
                         pumpAnimator.GetComponent<Animator>().SetBool(currentReEpisode.AnimationBool, true);
-                       
-                        
+                        audioSource.clip = currentReEpisode.EpisodeAudio;
+                        audioSource.Play();
+
+
                         break;
                     }
 
@@ -168,6 +186,7 @@ public class AssemblyReduxManager : MonoBehaviour
         }
         while (true)
         {
+
             if (pump.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(currentReEpisode.AnimationName))
             {
                 Debug.Log("animation name is: "+currentReEpisode.AnimationName);
@@ -213,8 +232,18 @@ public class AssemblyReduxManager : MonoBehaviour
         ReEpisodeObject.GetComponent<Collider>().enabled = false;
         ReEpisodeIndex += 1;
         Debug.Log("playing next episode, index is " + ReEpisodeIndex);
-        PlayNextEpisode();
+        if (ReEpisodeIndex < (PumpReEpisodes.Count))
+        {
+            PlayNextEpisode();
+        }
+        
         yield return null;
     
+    }
+
+    public void PlayIntroAudio()
+    {
+        audioSource.clip = introClip;
+        audioSource.Play();
     }
 }

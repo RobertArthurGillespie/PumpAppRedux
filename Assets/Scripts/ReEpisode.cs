@@ -13,6 +13,7 @@ public class ReEpisode : ScriptableObject
     public string CorrectObjectTag;
     public string AnimationName;
     public string IdleAnimationName;
+    public bool NoAnimation = false;
     // Start is called before the first frame update
     void Start()
     {

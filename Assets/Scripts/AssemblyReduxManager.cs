@@ -172,7 +172,11 @@ public class AssemblyReduxManager : MonoBehaviour
                                 transpObject.GetComponent<MeshRenderer>().material = RegularMaterial;
                             }
                         }*/
-                        pumpAnimator.GetComponent<Animator>().SetBool(currentReEpisode.AnimationBool, true);
+                        if (!currentReEpisode.NoAnimation)
+                        {
+                            pumpAnimator.GetComponent<Animator>().SetBool(currentReEpisode.AnimationBool, true);
+                        }
+                        
                         audioSource.clip = currentReEpisode.EpisodeAudio;
                         audioSource.Play();
 
@@ -186,16 +190,23 @@ public class AssemblyReduxManager : MonoBehaviour
         }
         while (true)
         {
-
-            if (pump.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(currentReEpisode.AnimationName))
+            if (!currentReEpisode.NoAnimation)
             {
-                Debug.Log("animation name is: "+currentReEpisode.AnimationName);
+                if (pump.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(currentReEpisode.AnimationName))
+                {
+                    Debug.Log("animation name is: " + currentReEpisode.AnimationName);
+                }
+                if (pump.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(currentReEpisode.IdleAnimationName))
+                {
+                    Debug.Log("animation name is: " + currentReEpisode.IdleAnimationName);
+                    break;
+                }
             }
-            if (pump.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(currentReEpisode.IdleAnimationName))
+            else
             {
-                Debug.Log("animation name is: "+currentReEpisode.IdleAnimationName);
                 break;
             }
+            
             /*if (pumpAnimator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !pumpAnimator.GetComponent<Animator>().IsInTransition(0))
             {
 

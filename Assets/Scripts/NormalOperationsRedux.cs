@@ -25,10 +25,12 @@ public class NormalOperationsRedux : MonoBehaviour
     public AudioClip LowSuctionScenarioClip;
     public AudioClip RecirculationScenarioClip;
     public TextMeshProUGUI valveLabel;
+    public TextMeshProUGUI scenarioLabel;
     public PointerState pointerState;
     public GameObject ValveWheelDischarge;
     public GameObject ValveWheelSuction;
     public int lerpProgress = 0;
+    public int lerpLimit = 11;
     public bool isLerping = false;
     public bool dischargeSelected = false;
     public bool suctionSelected = false;
@@ -36,21 +38,22 @@ public class NormalOperationsRedux : MonoBehaviour
     public float endValveValue = 0f;
     public void PlaySuccesAudio()
     {
-        if (pointerState.pointerIsUp)
-        {
-            Debug.Log("pointer is up");
-            if (!isLerping)
-            {
-                endValveValue = slider.value;
-                Debug.Log("starting animations, endvalvevalue is: "+endValveValue);
-                StartCoroutine(ScheduleLerp());
-                StartCoroutine(RotateSuctionValve());
-            }
-            
-            //run valve animation
-        }
+        
         if (slider.value > successValueLowerBound&&slider.value<successValueUpperBound)
         {
+            if (pointerState.pointerIsUp)
+            {
+                Debug.Log("pointer is up");
+                if (!isLerping)
+                {
+                    endValveValue = slider.value;
+                    Debug.Log("starting animations, endvalvevalue is: " + endValveValue);
+                    StartCoroutine(ScheduleLerp());
+                    StartCoroutine(RotateSuctionValve());
+                }
+
+                //run valve animation
+            }
             audioSource.clip = successClip;
             audioSource.Play();
             if (CurrentScenario == NormalOperationsScenarios.Recirculation)
@@ -151,6 +154,7 @@ public class NormalOperationsRedux : MonoBehaviour
         if (isRecirculation)
         {
             CurrentScenario = NormalOperationsScenarios.Recirculation;
+            scenarioLabel.text = "Scenario: Recirculation";
             successClip = RecirculationSuccessClip;
             audioSource.clip = RecirculationScenarioClip;
             audioSource.Play();
@@ -159,6 +163,7 @@ public class NormalOperationsRedux : MonoBehaviour
         else if (isHighDischarge)
         {
             CurrentScenario = NormalOperationsScenarios.HighDischarge;
+            scenarioLabel.text = "Scenario: High Discharge";
             successClip = HighDischargeSuccessClip;
             audioSource.clip = HighDischargeScenarioClip;
             audioSource.Play();
@@ -167,6 +172,7 @@ public class NormalOperationsRedux : MonoBehaviour
         else if (isLowSuction)
         {
             CurrentScenario = NormalOperationsScenarios.LowSuction;
+            scenarioLabel.text = "Scenario: Low Suction";
             successClip = LowSuctionSuccessClip;
             audioSource.clip = LowSuctionScenarioClip;
             audioSource.Play();
@@ -200,9 +206,23 @@ public class NormalOperationsRedux : MonoBehaviour
 
     public IEnumerator ScheduleLerp()
     {
+        lerpProgress = 0;
+        float sliderChangeDistance = 0f;
+        sliderChangeDistance = initialValveValue -= endValveValue;
+        float absoluteSliderChangeDist = Mathf.Abs(sliderChangeDistance);
+        Debug.Log("slider change distance is: " + absoluteSliderChangeDist);
+        if(absoluteSliderChangeDist > 0.5f)
+        {
+            lerpLimit = 8;
+        }
+        else if (absoluteSliderChangeDist < 0.25f)
+        {
+            lerpLimit = 3;
+        }
+        Debug.Log("Lerp limit is: " + lerpLimit);
         while (true)
         {
-            if (lerpProgress < 11)
+            if (lerpProgress < lerpLimit)
             {
                 lerpProgress++;
                 yield return new WaitForSeconds(1f);
@@ -221,10 +241,38 @@ public class NormalOperationsRedux : MonoBehaviour
     public IEnumerator RotateSuctionValve()
     {
         isLerping = true;
-        Debug.Log("pointer up valve value: " + pointerState.pointerUpValveValue + " and initial valuve value: " + initialValveValue);
+        //start lifetime 2.22, (originally 6.22), start speed set to 10.64 (originally 5.64)
+        if (suctionSelected)
+        {
+            if (endValveValue > 0.5f)
+            {
+                GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startLifetime = 3.22f;
+                GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startSpeed = 10.64f;
+            }
+            else if (endValveValue < 0.5f)
+            {
+                GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startLifetime = 6.22f;
+                GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startSpeed = 5.64f;
+            }
+            
+        }
+        else if (dischargeSelected)
+        {
+            if (endValveValue > 0.5f)
+            {
+                GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startLifetime = 3.22f;
+                GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startSpeed = 10.64f;
+            }
+            else if (endValveValue < 0.5f)
+            {
+                GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startLifetime = 6.22f;
+                GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startSpeed = 5.64f;
+            }
+            
+        }
         while (true)
         {
-            if (lerpProgress < 10)
+            if (lerpProgress < lerpLimit)
             {
                 if (suctionSelected)
                 {
@@ -241,6 +289,7 @@ public class NormalOperationsRedux : MonoBehaviour
                 }
                 else if (dischargeSelected)
                 {
+                    Debug.Log("endValveValue is: " + endValveValue + ", initialValveValue is: " + initialValveValue);
                     if(endValveValue > initialValveValue)
                     {
                         ValveWheelDischarge.transform.Rotate(0f, 0f, -1f);
@@ -254,14 +303,16 @@ public class NormalOperationsRedux : MonoBehaviour
                 }
                 
             }
-            else if (lerpProgress == 10)
+            else if (lerpProgress >= lerpLimit)
             {
                 isLerping = false;
                 break;
+                
             }
             yield return null;
         }
         
+
         yield return null;
     }
 }

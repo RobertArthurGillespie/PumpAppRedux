@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9c1a8ef555e8bb34fb44763ae211595e
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Scenes/MotoBikerGauge.unity
+  uploadId: 267668

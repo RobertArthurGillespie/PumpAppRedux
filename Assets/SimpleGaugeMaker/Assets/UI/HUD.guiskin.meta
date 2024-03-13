@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77788250c8dabc34b91272ec18144cad
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Assets/UI/HUD.guiskin
+  uploadId: 267668

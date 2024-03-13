@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: da427bebf6f86fd4493529519c83715e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Assets/Prefabs/BikerGauge.prefab
+  uploadId: 267668

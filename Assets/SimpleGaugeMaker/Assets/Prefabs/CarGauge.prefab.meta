@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ef7d4adeca4ef6478b4c09698e6a320
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Assets/Prefabs/CarGauge.prefab
+  uploadId: 267668

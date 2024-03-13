@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a1740c6427b3fc149a24ed0e21d6a857
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Assets/Prefabs/WaterGauge.prefab
+  uploadId: 267668

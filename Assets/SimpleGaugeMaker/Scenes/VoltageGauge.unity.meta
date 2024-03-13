@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 01257ed4c82bb08428e7ac9f99ad7f1e
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Scenes/VoltageGauge.unity
+  uploadId: 267668

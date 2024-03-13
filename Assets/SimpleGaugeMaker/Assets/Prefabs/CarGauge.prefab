@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1182612676779764}
+  m_IsPrefabParent: 1
+--- !u!1 &1182612676779764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4759683708466838}
+  - component: {fileID: 114349328411925266}
+  m_Layer: 0
+  m_Name: CarGauge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4759683708466838
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182612676779764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114349328411925266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182612676779764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22de45c7508b714bae33739ae7711e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hide: 0
+  gaugeInputs:
+  - tagName: CompoundGauge
+    minMaxValue: {x: 6, y: 24}
+    value: 13.16
+  dial:
+    Alignement: 0
+    Texture: {fileID: 2800000, guid: a78c63435b0a31d4aad5e5bde0eb74a6, type: 3}
+    Position: {x: 172.4, y: 108.6}
+    ScaleRatio: 0.6
+  needles:
+  - tagName: CompoundGauge
+    Alignement: 4
+    Texture: {fileID: 2800000, guid: a4accad802e7301488737efe48218df9, type: 3}
+    Pivot: {x: -14.16, y: 39.42}
+    PivotOffset: 0
+    posPivot: {x: 324.64, y: 276.02}
+    ScaleRatio: 0.8
+    DialRatioLock: 0
+    needleLimiter:
+    - LimiterName: 8-12
+      minMaxValue: {x: 6, y: 12}
+      StartEndValue: {x: -141.6, y: -100.9}
+    - LimiterName: 12-14
+      minMaxValue: {x: 12, y: 14}
+      StartEndValue: {x: -100.9, y: -63.8}
+    - LimiterName: 14-16
+      minMaxValue: {x: 14, y: 24}
+      StartEndValue: {x: -63.8, y: -38.3}
+    Hide: 0
+  knots:
+  - Name: 
+    Alignement: 4
+    Texture: {fileID: 2800000, guid: 36a246b7f786026498a2a88571dadfbc, type: 3}
+    Position: {x: 0, y: 15.46}
+    ScaleRatio: 0.6
+    DialRatioLock: 0
+    AlignToNeedle: 1
+    NeedleTag: 
+    Hide: 0
+  textLayer:
+  - tagName: VOLTAGE
+    Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
+    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    FontSize: 18
+    fontStyle: 1
+    Alignement: 4
+    Position: {x: 0, y: 87.1}
+    Size: {x: 100, y: 100}
+    useTagValue: 0
+    roundToInt: 0
+  - tagName: 6
+    Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    FontSize: 20
+    fontStyle: 1
+    Alignement: 4
+    Position: {x: -70.14, y: -21.99}
+    Size: {x: 100, y: 100}
+    useTagValue: 0
+    roundToInt: 0
+  - tagName: 12
+    Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    FontSize: 20
+    fontStyle: 1
+    Alignement: 4
+    Position: {x: -21.8, y: -46.27}
+    Size: {x: 100, y: 100}
+    useTagValue: 0
+    roundToInt: 0
+  - tagName: 14
+    Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    FontSize: 20
+    fontStyle: 1
+    Alignement: 4
+    Position: {x: 26.8, y: -43.8}
+    Size: {x: 100, y: 100}
+    useTagValue: 0
+    roundToInt: 0
+  - tagName: 24
+    Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    FontSize: 20
+    fontStyle: 1
+    Alignement: 4
+    Position: {x: 57.48, y: -24}
+    Size: {x: 100, y: 100}
+    useTagValue: 0
+    roundToInt: 0
+  - tagName: v6 ~ v24
+    Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    FontSize: 13
+    fontStyle: 1
+    Alignement: 4
+    Position: {x: 0, y: 103.86}
+    Size: {x: 100, y: 100}
+    useTagValue: 0
+    roundToInt: 0

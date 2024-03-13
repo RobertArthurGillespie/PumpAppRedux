@@ -36,6 +36,9 @@ public class NormalOperationsRedux : MonoBehaviour
     public bool suctionSelected = false;
     public float initialValveValue = 0f;
     public float endValveValue = 0f;
+
+    public Material standardUIMaterial;
+    public Material UIGlowMaterial;
     public void PlaySuccesAudio()
     {
         
@@ -97,7 +100,9 @@ public class NormalOperationsRedux : MonoBehaviour
                 {
                     valveLabel.gameObject.SetActive(true);
                     slider.gameObject.SetActive(true);
-                    valveLabel.text = "Discharge";
+                    //valveLabel.text = "Discharge";
+                    GameObject.Find("DischargePanel").GetComponent<Image>().material = UIGlowMaterial;
+                    GameObject.Find("IntakePanel").GetComponent<Image>().material = standardUIMaterial;
                     dischargeSelected = true;
                     suctionSelected = false;
                 }
@@ -105,7 +110,9 @@ public class NormalOperationsRedux : MonoBehaviour
                 {
                     valveLabel.gameObject.SetActive(true);
                     slider.gameObject.SetActive(true);
-                    valveLabel.text = "Intake";
+                    GameObject.Find("IntakePanel").GetComponent<Image>().material = UIGlowMaterial;
+                    GameObject.Find("DischargePanel").GetComponent<Image>().material = standardUIMaterial;
+                    //valveLabel.text = "Intake";
                     suctionSelected=true;
                     dischargeSelected=false;
                 }
@@ -247,7 +254,7 @@ public class NormalOperationsRedux : MonoBehaviour
             if (endValveValue > 0.5f)
             {
                 GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startLifetime = 3.22f;
-                GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startSpeed = 10.64f;
+                GameObject.Find("Flow_Bubbles_Suction").GetComponent<ParticleSystem>().startSpeed = 15.64f;
             }
             else if (endValveValue < 0.5f)
             {
@@ -261,7 +268,7 @@ public class NormalOperationsRedux : MonoBehaviour
             if (endValveValue > 0.5f)
             {
                 GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startLifetime = 3.22f;
-                GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startSpeed = 10.64f;
+                GameObject.Find("Flow_Bubbles_Discharge").GetComponent<ParticleSystem>().startSpeed = 15.64f;
             }
             else if (endValveValue < 0.5f)
             {

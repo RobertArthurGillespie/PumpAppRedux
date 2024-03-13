@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 13d2ababdcd84d645b4f9ce13baed490
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Assets/Prefabs/VoltageGauge.prefab
+  uploadId: 267668

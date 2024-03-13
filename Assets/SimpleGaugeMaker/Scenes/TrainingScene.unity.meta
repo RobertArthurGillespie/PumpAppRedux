@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f656c47f69c3d47478c0d10c540e8120
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Scenes/TrainingScene.unity
+  uploadId: 267668

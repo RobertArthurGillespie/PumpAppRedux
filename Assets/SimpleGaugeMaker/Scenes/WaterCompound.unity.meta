@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e0499ae69cf3b824ab1d076bfb53dfba
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127765
+  packageName: Simple Gauge Maker
+  packageVersion: 1.1
+  assetPath: Assets/SimpleGaugeMaker/Scenes/WaterCompound.unity
+  uploadId: 267668

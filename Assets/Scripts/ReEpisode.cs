@@ -14,6 +14,7 @@ public class ReEpisode : ScriptableObject
     public string AnimationName;
     public string IdleAnimationName;
     public bool NoAnimation = false;
+    public List<string> ExtensionMethods = new List<string>();
     // Start is called before the first frame update
     void Start()
     {

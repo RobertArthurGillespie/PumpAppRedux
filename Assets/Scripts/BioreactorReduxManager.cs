@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ public class BioreactorReduxManager : MonoBehaviour
     public Material glowMat;
     public Color BeginColor;
     public Color EndColor;
+    public GameObject VCam1;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,9 +72,11 @@ public class BioreactorReduxManager : MonoBehaviour
                     bioHighlightMaterial.color = biohighlightColor;*/
                     //glowMat.SetColor("_BaseColor",lerpColor);
                     Material glowM = bioHighlight.GetComponent<Renderer>().material;
-                    
+                    Material glowM2 = fieldHighlight.GetComponent<Renderer>().material;
                     glowM.SetColor("_BaseColor", lerpColor);
+                    glowM2.SetColor("_BaseColor", lerpColor);
                     bioHighlight.GetComponent<Renderer>().material = glowM;
+                    fieldHighlight.GetComponent<Renderer>().material = glowM2;
                     Debug.Log("biohighlightMaterial color is: " + glowM.color.r + "," + glowM.color.g + "," + glowM.color.b+", r is: "+bioHighlight.GetComponent<Renderer>().material.color.r);
                     
                     //fieldHighlight.GetComponent<MeshRenderer>().material.color = lerpColor;
@@ -90,9 +94,11 @@ public class BioreactorReduxManager : MonoBehaviour
                     Color lerpColor = new Color();
                     lerpColor = Color.Lerp(EndColor, BeginColor, t);
                     Material glowM = bioHighlight.GetComponent<Renderer>().material;
-
+                    Material glowM2 = fieldHighlight.GetComponent<Renderer>().material;
                     glowM.SetColor("_BaseColor", lerpColor);
+                    glowM2.SetColor("_BaseColor", lerpColor);
                     bioHighlight.GetComponent<Renderer>().material = glowM;
+                    fieldHighlight.GetComponent<Renderer>().material = glowM2;
                     Debug.Log("biohighlightMaterial color in cycle 2 is: " + glowM.color.r + "," + glowM.color.g + "," + glowM.color.b + ", r is: " + bioHighlight.GetComponent<Renderer>().material.color.r);
 
                     //fieldHighlight.GetComponent<MeshRenderer>().material.color = lerpColor;
@@ -129,8 +135,7 @@ public class BioreactorReduxManager : MonoBehaviour
 
         if (!introAudioFinished)
         {
-            audioSource.clip = introClip;
-            audioSource.Play();
+
             while (true)
             {
                 if (!audioSource.isPlaying)
@@ -145,6 +150,7 @@ public class BioreactorReduxManager : MonoBehaviour
 
         ReEpisodeObject = GameObject.Find(currentReEpisode.EpisodeObjectName);
         ReEpisodeObject.GetComponent<Collider>().enabled = true;
+        RegularMaterial = ReEpisodeObject.GetComponent<MeshRenderer>().material;
         Debug.Log("ReEpisode object is: " + ReEpisodeObject.name);
         if (currentReEpisode.TransparentObjectNames.Count > 0)
         {
@@ -181,10 +187,7 @@ public class BioreactorReduxManager : MonoBehaviour
             }
         }
         Debug.Log("outline added");
-        if(currentReEpisode.ExtensionMethods.Count > 0)
-        {
-
-        }
+        
         while (true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -220,8 +223,12 @@ public class BioreactorReduxManager : MonoBehaviour
                                 obj.GetComponent<MeshRenderer>().materials = RegMatArray;
                             }
                         }
-                        
-                        if (!currentReEpisode.NoAnimation)
+
+                        if (currentReEpisode.OtherAnimator)
+                        {
+                            GameObject.Find(currentReEpisode.OtherAnimatorName).GetComponent<Animator>().SetBool(currentReEpisode.AnimationBool, true);
+                        }
+                        else if (!currentReEpisode.NoAnimation)
                         {
                             bioAnimator.GetComponent<Animator>().SetBool(currentReEpisode.AnimationBool, true);
                         }
@@ -292,6 +299,13 @@ public class BioreactorReduxManager : MonoBehaviour
         ReEpisodeObject.GetComponent<Collider>().enabled = false;
         ReEpisodeIndex += 1;
         Debug.Log("playing next episode, index is " + ReEpisodeIndex);
+        if (currentReEpisode.ExtensionMethods.Count > 0)
+        {
+            foreach(string method in currentReEpisode.ExtensionMethods)
+            {
+                RunExtensionMethods(method);
+            }
+        }
         if (ReEpisodeIndex < (bioReEpisodes.Count))
         {
             PlayNextEpisode();
@@ -316,6 +330,12 @@ public class BioreactorReduxManager : MonoBehaviour
                 RunHydrogenParticleSystem();
                 break;
 
+            case "ActivateVCam1":
+                Debug.Log("activating VCam1");
+                ActivateVCam1();
+                break;
+
+
             default:
                 Debug.Log("no methods run");
                 break;
@@ -323,12 +343,43 @@ public class BioreactorReduxManager : MonoBehaviour
         
     }
 
-    public IEnumerator ScheduleIntroGlowCycle()
+    public void ActivateVCam1()
     {
-        yield return new WaitForSeconds(180f);
-        endAllGlowCycles = true;
+        //VCam1.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        StartCoroutine(ActivateVCam1Coroutine());
     }
 
+    public IEnumerator ActivateVCam1Coroutine()
+    {
+        VCam1.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        while (true)
+        {
+            if(!audioSource.isPlaying)
+            {
+                break;
+            }
+            else
+            {
+                Debug.Log("waiting to activate VCam");
+            }
+            yield return null;
+        }
+        VCam1.GetComponent<CinemachineVirtualCamera>().enabled = false;
+    }
+
+    public IEnumerator ScheduleIntroGlowCycle()
+    {
+        yield return new WaitForSeconds(10f);
+        endAllGlowCycles = true;
+        bioAnimator.GetComponent<Animator>().SetBool("OpenFieldView", true);
+        RunBioReactorSim();
+    }
+
+    public void RunBioReactorSim()
+    {
+        
+        StartCoroutine(PlayReEpisodeCoroutine());
+    }
     public void RunHydrogenParticleSystem()
     {
 

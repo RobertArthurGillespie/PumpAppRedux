@@ -147,7 +147,13 @@ public class BioreactorReduxManager : MonoBehaviour
             }
         }
         ReEpisode currentReEpisode = bioReEpisodes[ReEpisodeIndex];
-
+        if (currentReEpisode.OpeningExtensionMethods.Count > 0)
+        {
+            foreach(string method in currentReEpisode.OpeningExtensionMethods)
+            {
+                RunExtensionMethods(method);
+            }
+        }
         ReEpisodeObject = GameObject.Find(currentReEpisode.EpisodeObjectName);
         ReEpisodeObject.GetComponent<Collider>().enabled = true;
         RegularMaterial = ReEpisodeObject.GetComponent<MeshRenderer>().material;
@@ -248,6 +254,7 @@ public class BioreactorReduxManager : MonoBehaviour
         {
             if (!currentReEpisode.NoAnimation)
             {
+                
                 if (bio.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(currentReEpisode.AnimationName))
                 {
                     Debug.Log("animation name is: " + currentReEpisode.AnimationName);
@@ -308,6 +315,19 @@ public class BioreactorReduxManager : MonoBehaviour
         }
         if (ReEpisodeIndex < (bioReEpisodes.Count))
         {
+            while (true)
+            {
+                if (audioSource.isPlaying)
+                {
+                    Debug.Log("waiting to play next episode");
+                }
+                else
+                {
+                    break;
+                }
+                
+                yield return null;
+            }
             PlayNextEpisode();
         }
 
@@ -335,12 +355,43 @@ public class BioreactorReduxManager : MonoBehaviour
                 ActivateVCam1();
                 break;
 
+            case "TurnOffFieldHighlight":
+                TurnOffFieldHighlight();
+                break;
+            case "ScaleWoodChipWaterDown":
+                StartCoroutine(ScaleWoodchipWaterDown());
+                break;
+
+            case "ActivateVcam2":
+                StartCoroutine(ActivateVcam2());
+                break;
+
 
             default:
                 Debug.Log("no methods run");
                 break;
         }
         
+    }
+
+    public IEnumerator ActivateVcam2()
+    {
+        Debug.Log("activating Vcam2");
+        GameObject.Find("VCam2").GetComponent<CinemachineVirtualCamera>().enabled = true;
+        yield return new WaitForSeconds(35f);
+        GameObject.Find("VCam2").GetComponent<CinemachineVirtualCamera>().enabled = false;
+    }
+
+    public IEnumerator ScaleWoodchipWaterDown()
+    {
+        Debug.Log("beginning scale down");
+        yield return new WaitForSeconds(45f);
+        GameObject.Find("WoodChips_Water").GetComponent<Animator>().SetBool("ScaleDown", true);
+    }
+
+    public void TurnOffFieldHighlight()
+    {
+        GameObject.Find("highlight_map").SetActive(false);
     }
 
     public void ActivateVCam1()
@@ -372,6 +423,7 @@ public class BioreactorReduxManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         endAllGlowCycles = true;
         bioAnimator.GetComponent<Animator>().SetBool("OpenFieldView", true);
+        TurnOffFieldHighlight();
         RunBioReactorSim();
     }
 

@@ -17,6 +17,7 @@ public class ReEpisode : ScriptableObject
     public bool OtherAnimator = false;
     public string OtherAnimatorName;
     public List<string> ExtensionMethods = new List<string>();
+    public List<string> OpeningExtensionMethods = new List<string>();
     // Start is called before the first frame update
     void Start()
     {

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 36a7698bab75c60468c19462b17208a7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177295
+  packageName: HDRP & URP Water Shader
+  packageVersion: 1.0
+  assetPath: Assets/Corvostudio/WaterShader/Demo-HDRP/island_model/Materials/Terrain_Terrain_1Mat.mat
+  uploadId: 387457

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 292f14abdd7114d45b203878182da530
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177295
+  packageName: HDRP & URP Water Shader
+  packageVersion: 1.0
+  assetPath: Assets/Corvostudio/WaterShader/Demo-HDRP/settings/WaterPool_HDRP_mat.mat
+  uploadId: 387457

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e43cc7d43ee1ca48b8d5f865e95b8bf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177295
+  packageName: HDRP & URP Water Shader
+  packageVersion: 1.0
+  assetPath: Assets/Corvostudio/WaterShader/Demo-HDRP/island_model/Materials/pool_mat.mat
+  uploadId: 387457

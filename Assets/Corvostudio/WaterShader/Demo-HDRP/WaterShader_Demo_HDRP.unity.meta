@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b961e7b1b6cb9f3408a98972b88b38c2
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177295
+  packageName: HDRP & URP Water Shader
+  packageVersion: 1.0
+  assetPath: Assets/Corvostudio/WaterShader/Demo-HDRP/WaterShader_Demo_HDRP.unity
+  uploadId: 387457

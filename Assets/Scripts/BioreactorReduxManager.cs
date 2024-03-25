@@ -114,7 +114,7 @@ public class BioreactorReduxManager : MonoBehaviour
             }
             else
             {
-                woodChipParticles.GetComponent<ParticleSystem>().Stop();
+                //woodChipParticles.GetComponent<ParticleSystem>().Stop();
                 break;
             }
             
@@ -420,10 +420,11 @@ public class BioreactorReduxManager : MonoBehaviour
 
     public IEnumerator ScheduleIntroGlowCycle()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(95f);
         endAllGlowCycles = true;
         bioAnimator.GetComponent<Animator>().SetBool("OpenFieldView", true);
         TurnOffFieldHighlight();
+        GameObject.Find("VCam0").GetComponent<CinemachineVirtualCamera>().enabled = true;
         RunBioReactorSim();
     }
 

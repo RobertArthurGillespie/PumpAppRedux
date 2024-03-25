@@ -215,7 +215,7 @@ public class NormalOperationsRedux : MonoBehaviour
     {
         lerpProgress = 0;
         float sliderChangeDistance = 0f;
-        sliderChangeDistance = initialValveValue -= endValveValue;
+        sliderChangeDistance = initialValveValue - endValveValue;
         float absoluteSliderChangeDist = Mathf.Abs(sliderChangeDistance);
         Debug.Log("slider change distance is: " + absoluteSliderChangeDist);
         if(absoluteSliderChangeDist > 0.5f)
@@ -286,10 +286,15 @@ public class NormalOperationsRedux : MonoBehaviour
                     if (endValveValue > initialValveValue)
                     {
                         ValveWheelSuction.transform.Rotate(0f, 0f, -1f);
+                        GameObject.Find("Intake_Needle_base").transform.Rotate(0f, 0f, 0.2f);
+                        Debug.Log("intake move right");
                     }
                     else if(endValveValue < initialValveValue)
                     {
                         ValveWheelSuction.transform.Rotate(0f, 0f, 1f);
+                        GameObject.Find("Intake_Needle_base").transform.Rotate(0f, 0f, -0.2f);
+                        Debug.Log("Intake move left");
+
                     }
 
 
@@ -300,11 +305,15 @@ public class NormalOperationsRedux : MonoBehaviour
                     if(endValveValue > initialValveValue)
                     {
                         ValveWheelDischarge.transform.Rotate(0f, 0f, -1f);
+                        GameObject.Find("Discharge_Needle_Base").transform.Rotate(0f, 0f, 0.2f);
+                        Debug.Log("discharge move right");
 
                     }
                     else if(endValveValue < initialValveValue)
                     {
                         ValveWheelDischarge.transform.Rotate(0f, 0f, 1f);
+                        GameObject.Find("Discharge_Needle_Base").transform.Rotate(0f, 0f, -0.2f);
+                        Debug.Log("discharge move left");
                     }
                     
                 }

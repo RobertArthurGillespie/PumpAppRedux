@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 715eb5aaba90f9440b770db9014a999d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177295
+  packageName: HDRP & URP Water Shader
+  packageVersion: 1.0
+  assetPath: Assets/Corvostudio/WaterShader/Prefabs/WaterPlane pond.prefab
+  uploadId: 387457

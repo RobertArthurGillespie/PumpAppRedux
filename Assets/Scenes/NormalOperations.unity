@@ -592,7 +592,7 @@ Transform:
   m_GameObject: {fileID: 67605056}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06614682, y: -0.70400614, z: 0.70400614, w: -0.06614682}
-  m_LocalPosition: {x: -0.014, y: 7.2, z: 0.015}
+  m_LocalPosition: {x: -0.081, y: 87, z: 0.015}
   m_LocalScale: {x: 1, y: 1, z: 44.1131}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,8 +633,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.21
-  m_Range: 0.87
+  m_Intensity: 0.86
+  m_Range: 1.51
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -982,7 +982,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f1cd062ee8d24349b241b6828391bd0, type: 2}
+  - {fileID: 2100000, guid: f594318e9322cd749ba8f8f73987e2b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1021,8 +1021,8 @@ Transform:
   m_GameObject: {fileID: 309272948}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.12, y: 1.909, z: -0.957}
-  m_LocalScale: {x: 1, y: 0.022669, z: 1}
+  m_LocalPosition: {x: -2.0906, y: 1.698, z: -0.94}
+  m_LocalScale: {x: 1.3632506, y: 0.004427709, z: 1.3668481}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 67605057}
@@ -1127,7 +1127,7 @@ Transform:
   m_GameObject: {fileID: 337828113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.72, y: 1.81, z: -1.09}
+  m_LocalPosition: {x: -0.72, y: 1.54, z: -1.09}
   m_LocalScale: {x: 0.243996, y: 0.31141207, z: 0.24399598}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1236,7 +1236,7 @@ Transform:
   m_GameObject: {fileID: 437041943}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06614682, y: -0.70400614, z: 0.70400614, w: -0.06614682}
-  m_LocalPosition: {x: -0.03, y: 10.4, z: 0.05}
+  m_LocalPosition: {x: -0.1, y: 123, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 44.113094}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1277,7 +1277,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.21
+  m_Intensity: 1.02
   m_Range: 1.25
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7921,7 +7921,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f1cd062ee8d24349b241b6828391bd0, type: 2}
+  - {fileID: 2100000, guid: f594318e9322cd749ba8f8f73987e2b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7960,8 +7960,8 @@ Transform:
   m_GameObject: {fileID: 1175227956}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.72, y: 1.975, z: -1.127}
-  m_LocalScale: {x: 1, y: 0.022669, z: 1}
+  m_LocalPosition: {x: -0.72, y: 1.741, z: -1.127}
+  m_LocalScale: {x: 1.3632506, y: 0.004427709, z: 1.3668481}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 437041944}
@@ -13546,9 +13546,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1609297681}
   successClip: {fileID: 8300000, guid: 6a6655b21f5e10f4bb3280bb21c7f9e1, type: 3}
-  introClip_1: {fileID: 8300000, guid: 02cc0047b1fce614189dccb0465b0895, type: 3}
-  introClip_2: {fileID: 8300000, guid: 98b1329a9b326004c86b3c856fc05b17, type: 3}
-  cavitationClip: {fileID: 8300000, guid: 8816d8894fe295146a4d625ae7f2f71a, type: 3}
+  introClip_1: {fileID: 8300000, guid: 992ef60075d61d349ba2f51591321052, type: 3}
+  introClip_2: {fileID: 8300000, guid: 992ef60075d61d349ba2f51591321052, type: 3}
+  cavitationClip: {fileID: 8300000, guid: 1d388883acd066742b623df3ddf41d9d, type: 3}
   successValueLowerBound: 0.499
   successValueUpperBound: 0.52
   slider: {fileID: 1585283460}
@@ -13681,7 +13681,7 @@ Transform:
   m_GameObject: {fileID: 1688551158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1069999, y: 1.7440001, z: -0.9200001}
+  m_LocalPosition: {x: -2.1069999, y: 1.508, z: -0.9200001}
   m_LocalScale: {x: 0.243996, y: 0.31141207, z: 0.243996}
   m_ConstrainProportionsScale: 0
   m_Children:

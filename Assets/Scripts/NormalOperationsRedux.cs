@@ -57,6 +57,8 @@ public class NormalOperationsRedux : MonoBehaviour
 
                 //run valve animation
             }
+            audioSource.volume = 1f;
+            audioSource.loop = false;
             audioSource.clip = successClip;
             audioSource.Play();
             if (CurrentScenario == NormalOperationsScenarios.Recirculation)
@@ -72,6 +74,21 @@ public class NormalOperationsRedux : MonoBehaviour
                 isHighDischarge = false;
             }
             IntroduceScenario();
+        }
+        else
+        {
+            if (slider.value < successValueLowerBound)
+            {
+                float howClose = successValueLowerBound - slider.value;
+                Debug.Log("how close is: " + howClose);
+                audioSource.volume=howClose;
+            }
+            else if (slider.value > successValueUpperBound)
+            {
+                float howClose = slider.value-successValueUpperBound;
+                Debug.Log("how close is: " + howClose);
+                audioSource.volume = howClose;
+            }
         }
     }
 
@@ -166,6 +183,7 @@ public class NormalOperationsRedux : MonoBehaviour
             audioSource.clip = RecirculationScenarioClip;
             audioSource.Play();
             RunScenario();
+            StartCoroutine(PlayDynamicCaviationAudio());
         }
         else if (isHighDischarge)
         {
@@ -175,6 +193,7 @@ public class NormalOperationsRedux : MonoBehaviour
             audioSource.clip = HighDischargeScenarioClip;
             audioSource.Play();
             RunScenario();
+            StartCoroutine(PlayDynamicCaviationAudio());
         }
         else if (isLowSuction)
         {
@@ -184,11 +203,13 @@ public class NormalOperationsRedux : MonoBehaviour
             audioSource.clip = LowSuctionScenarioClip;
             audioSource.Play();
             RunScenario();
+            StartCoroutine(PlayDynamicCaviationAudio());
         }
     }
 
     public void RunScenario()
     {
+       
         switch (CurrentScenario)
         {
             case NormalOperationsScenarios.HighDischarge:
@@ -209,6 +230,40 @@ public class NormalOperationsRedux : MonoBehaviour
                 successValueUpperBound = 1.0f;
                 break;
         }
+    }
+
+    public IEnumerator PlayDynamicCaviationAudio()
+    {
+
+        while (true)
+        {
+            if (audioSource.isPlaying)
+            {
+                Debug.Log("waiting to cavitate");
+            }
+            else
+            {
+                break;
+            }
+            yield return null;
+        }
+        audioSource.clip = cavitationClip;
+        audioSource.loop = true;
+        audioSource.volume = 1f;
+        if (slider.value < successValueLowerBound)
+        {
+            float howClose = successValueLowerBound - slider.value;
+            Debug.Log("how close is: " + howClose);
+            audioSource.volume = howClose;
+        }
+        else if (slider.value > successValueUpperBound)
+        {
+            float howClose = slider.value - successValueUpperBound;
+            Debug.Log("how close is: " + howClose);
+            audioSource.volume = howClose;
+        }
+        //audioSource.volume = 1f;
+        audioSource.Play();
     }
 
     public IEnumerator ScheduleLerp()
@@ -286,13 +341,13 @@ public class NormalOperationsRedux : MonoBehaviour
                     if (endValveValue > initialValveValue)
                     {
                         ValveWheelSuction.transform.Rotate(0f, 0f, -1f);
-                        GameObject.Find("Intake_Needle_base").transform.Rotate(0f, 0f, 0.2f);
+                        GameObject.Find("Intake_Needle_base").transform.Rotate(0f, 0f, 0.1f);
                         Debug.Log("intake move right");
                     }
                     else if(endValveValue < initialValveValue)
                     {
                         ValveWheelSuction.transform.Rotate(0f, 0f, 1f);
-                        GameObject.Find("Intake_Needle_base").transform.Rotate(0f, 0f, -0.2f);
+                        GameObject.Find("Intake_Needle_base").transform.Rotate(0f, 0f, -0.1f);
                         Debug.Log("Intake move left");
 
                     }
@@ -305,14 +360,14 @@ public class NormalOperationsRedux : MonoBehaviour
                     if(endValveValue > initialValveValue)
                     {
                         ValveWheelDischarge.transform.Rotate(0f, 0f, -1f);
-                        GameObject.Find("Discharge_Needle_Base").transform.Rotate(0f, 0f, 0.2f);
+                        GameObject.Find("Discharge_Needle_Base").transform.Rotate(0f, 0f, 0.1f);
                         Debug.Log("discharge move right");
 
                     }
                     else if(endValveValue < initialValveValue)
                     {
                         ValveWheelDischarge.transform.Rotate(0f, 0f, 1f);
-                        GameObject.Find("Discharge_Needle_Base").transform.Rotate(0f, 0f, -0.2f);
+                        GameObject.Find("Discharge_Needle_Base").transform.Rotate(0f, 0f, -0.1f);
                         Debug.Log("discharge move left");
                     }
                     

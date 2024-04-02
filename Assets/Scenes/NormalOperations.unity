@@ -13546,8 +13546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1609297681}
   successClip: {fileID: 8300000, guid: 6a6655b21f5e10f4bb3280bb21c7f9e1, type: 3}
-  introClip_1: {fileID: 8300000, guid: 992ef60075d61d349ba2f51591321052, type: 3}
-  introClip_2: {fileID: 8300000, guid: 992ef60075d61d349ba2f51591321052, type: 3}
+  introClip_1: {fileID: 8300000, guid: 02cc0047b1fce614189dccb0465b0895, type: 3}
+  introClip_2: {fileID: 8300000, guid: 98b1329a9b326004c86b3c856fc05b17, type: 3}
   cavitationClip: {fileID: 8300000, guid: 1d388883acd066742b623df3ddf41d9d, type: 3}
   successValueLowerBound: 0.499
   successValueUpperBound: 0.52

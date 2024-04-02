@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -59,6 +60,7 @@ public class AssemblyReduxManager : MonoBehaviour
         {
             audioSource.clip = introClip;
             audioSource.Play();
+            GameObject.Find("SimScriptText").GetComponent<TextMeshProUGUI>().text = "Let's start by looking at the basic parts of a pump; click each item to put together the pump.";
             while (true)
             {
                 if (!audioSource.isPlaying)
@@ -136,6 +138,7 @@ public class AssemblyReduxManager : MonoBehaviour
                     Debug.Log("hit, tag is: "+hit.transform.tag);
                     if (hit.transform.tag == currentReEpisode.CorrectObjectTag)
                     {
+                        GameObject.Find("SimScriptText").GetComponent<TextMeshProUGUI>().text = currentReEpisode.EpisodeText;
                         MatArray[1] = RegularMaterial;
                         ReEpisodeObject.GetComponent<MeshRenderer>().materials = MatArray;
                         if (currentReEpisode.AdditionalObjectNames.Count > 0)

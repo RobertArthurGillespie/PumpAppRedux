@@ -50,7 +50,7 @@ public class TitratorReduxManager : MonoBehaviour
         {
             audioSource.clip = introClip;
             audioSource.Play();
-            GameObject.Find("SimScriptText").GetComponent<TextMeshProUGUI>().text = "Let's start by looking at the basic parts of a pump; click each item to put together the pump.";
+            //GameObject.Find("SimScriptText").GetComponent<TextMeshProUGUI>().text = "Let's start by looking at the basic parts of a pump; click each item to put together the pump.";
             while (true)
             {
                 if (!audioSource.isPlaying)

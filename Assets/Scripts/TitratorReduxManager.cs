@@ -17,6 +17,7 @@ public class TitratorReduxManager : MonoBehaviour
     public Material HighlightMaterial;
     public bool introAudioFinished = false;
     public bool hasSkinnedMeshRenderer = false;
+    public UIManager uiManager;
     GameObject ReEpisodeObject;
 
     public void PlayNextEpisode()
@@ -55,6 +56,8 @@ public class TitratorReduxManager : MonoBehaviour
             {
                 if (!audioSource.isPlaying)
                 {
+                    uiManager.CollapseMenu();
+                    GameObject.Find("SimScriptText").GetComponent<TextMeshProUGUI>().text = "Click the titrator knob to turn it from \"off\" to \"standby\"";
                     introAudioFinished = true;
                     break;
                 }
@@ -92,7 +95,7 @@ public class TitratorReduxManager : MonoBehaviour
         Outline outlineToEdit = ReEpisodeObject.GetComponent<Outline>();
         outlineToEdit.OutlineColor = new Color(1.60200012f, 1.57944012f, 0, 1);
         outlineToEdit.OutlineWidth = 8f;*/
-        
+
         if (currentReEpisode.HasSkinnedMeshRenderer)
         {
             MatArray = ReEpisodeObject.GetComponent<SkinnedMeshRenderer>().materials;
@@ -107,7 +110,7 @@ public class TitratorReduxManager : MonoBehaviour
             MatArray[0] = HighlightMaterial;
             ReEpisodeObject.GetComponent<MeshRenderer>().materials = MatArray;
         }
-        
+
         if (currentReEpisode.AdditionalObjectNames.Count > 0)
         {
             foreach (string name in currentReEpisode.AdditionalObjectNames)
@@ -126,10 +129,11 @@ public class TitratorReduxManager : MonoBehaviour
                     GlowMatArray[1] = HighlightMaterial;
                     obj.GetComponent<MeshRenderer>().materials = GlowMatArray;
                 }
-                
+
             }
         }
         Debug.Log("outline added");
+
         while (true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -142,7 +146,7 @@ public class TitratorReduxManager : MonoBehaviour
 
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, 100))
+                if (Physics.Raycast(ray, out hit, 100)&& !uiManager.isPaused)
 
                 {
 
